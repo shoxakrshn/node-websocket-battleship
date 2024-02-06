@@ -1,0 +1,55 @@
+{
+  "name": "websocket-battleship",
+  "version": "1.0.0",
+  "description": "RS NodeJS task WebSocket Battleship",
+  "main": "index.ts",
+  "scripts": {
+    "build:dev": "webpack --env mode=development",
+    "build:prod": "webpack --env mode=production",
+    "start:dev": "nodemon",
+    "start:prod": "npm run build:prod && node ./dist/main.js",
+    "start:multi": "npm run build:prod && npx cross-env MODE=multi node ./dist/main.js",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 & npx prettier . --check",
+    "prettier": "prettier --config .prettierrc \"./**/*.{ts,tsx,json,scss}\" --write",
+    "eslint": "eslint --ext . \"./**/*.{ts,tsx}\" --fix",
+    "lint:fix": "npm run prettier && npm run eslint",
+    "prepare": "husky",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shoxakrshn/node-websocket-battleship.git"
+  },
+  "keywords": [
+    "websocket",
+    "nodejs"
+  ],
+  "author": "shoxakrshn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shoxakrshn/node-websocket-battleship/issues"
+  },
+  "homepage": "https://github.com/shoxakrshn/node-websocket-battleship#readme",
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "@types/webpack": "^5.28.5",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.2",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.5",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.1"
+  }
+}
