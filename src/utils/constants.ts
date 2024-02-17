@@ -1,4 +1,4 @@
-import { ShipsType } from '../type';
+import { ShipsType } from '../types/types';
 
 export enum eRequestType {
   Reg = 'reg',
