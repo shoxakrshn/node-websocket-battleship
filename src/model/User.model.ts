@@ -1,4 +1,4 @@
-class User {
+export class User {
   public wins: number;
 
   constructor(
@@ -9,5 +9,3 @@ class User {
     this.wins = 0;
   }
 }
-
-export default User;

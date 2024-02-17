@@ -39,7 +39,6 @@ export class Ship {
 
   getStatus() {
     const values: boolean[] = Array.from(this.shipPositionMap.values());
-    console.log('values:', values);
     const result = values.every((value) => value === true);
     return result ? 'killed' : 'shot';
   }
