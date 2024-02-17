@@ -1,5 +1,6 @@
 node_modules/
 dist/
+front/
 .eslintrc.cjs
 env.d.ts
 vite.config.ts

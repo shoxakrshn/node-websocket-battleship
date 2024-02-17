@@ -2,6 +2,7 @@
 build
 coverage
 dist
+front
 node_modules
 .next
 README.md
