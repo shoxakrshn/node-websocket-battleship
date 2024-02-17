@@ -9,7 +9,10 @@ export default (env: EnvVariables) => {
   const config: Configuration = {
     target: 'node',
     mode: env.mode ?? 'development',
-    entry: path.resolve(__dirname, 'src', 'index.ts'),
+    entry: {
+      ws: path.resolve(__dirname, 'src', 'ws_server', 'index.ts'),
+      http: path.resolve(__dirname, 'src', 'http_server', 'index.ts'),
+    },
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].js',
@@ -27,6 +30,10 @@ export default (env: EnvVariables) => {
     },
     resolve: {
       extensions: ['.tsx', '.ts', '.js'],
+    },
+    externals: {
+      bufferutil: 'bufferutil',
+      'utf-8-validate': 'utf-8-validate',
     },
   };
 

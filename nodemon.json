@@ -2,5 +2,5 @@
   "watch": ["src"],
   "ext": "ts",
   "ignore": ["node_modules"],
-  "exec": "npx cross-env MODE=multi ts-node ./src/index.ts"
+  "exec": "npx ts-node ./src/ws_server/index.ts"
 }
