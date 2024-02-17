@@ -9,6 +9,12 @@ export const addUserToRoomController = (id: number, data: string) => {
   const { indexRoom }: AddUserToRoomDataClinet = JSON.parse(data);
   const room = roomDb.get(indexRoom);
   const { index, name } = userDb.get(id);
+
+  const isUserInRoom = room.roomUsers.find((user) => user.index === id);
+  if (isUserInRoom) {
+    return;
+  }
+
   room.addUser({ index, name });
 
   const newGame = new Game();
