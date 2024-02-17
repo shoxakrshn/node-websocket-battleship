@@ -10,7 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },
-  "include": ["src", ".eslintrc.json", "webpack.config.ts", "jest.config.ts", "babel.config.js"],
+  "include": ["src", ".eslintrc.json", "webpack.config.ts", "jest.config.ts", "babel.config.js", "./front/main.js"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
