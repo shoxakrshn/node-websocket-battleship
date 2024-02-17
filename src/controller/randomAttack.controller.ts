@@ -1,8 +1,7 @@
 import { getSurroundingCoordinates } from '../utils/getSurroundingCoordinates';
 import { gameDb, socketDb, userDb } from '../store/store';
-import { eRequestType } from '../type';
 import { RandomAttackDataClient } from '../types/dataTypes';
-import { eStatusType } from '../utils/constants';
+import { eRequestType, eStatusType } from '../utils/constants';
 import { generateResponseDto } from '../utils/generateResponseDto.ts';
 import { turnController } from './turn.controller';
 import { broadcastWinners } from './updateWinners.controller';
