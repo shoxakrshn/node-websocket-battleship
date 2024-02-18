@@ -10,10 +10,6 @@ WebSocket Battleship Server RS NodeJS2024Q1
 2. `npm install`
 
 ## Usage
-
-**Build app:**
-`npm run build:prod`
-
 **Launch HTTP-server for Frontend:**
 `npm run start:http`
 * HTTP-server served @ `http://localhost:8181`
