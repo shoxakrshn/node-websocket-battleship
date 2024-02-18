@@ -9,10 +9,7 @@ export default (env: EnvVariables) => {
   const config: Configuration = {
     target: 'node',
     mode: env.mode ?? 'development',
-    entry: {
-      ws: path.resolve(__dirname, 'src', 'ws_server', 'index.ts'),
-      http: path.resolve(__dirname, 'src', 'http_server', 'index.ts'),
-    },
+    entry: path.resolve(__dirname, 'src', 'ws_server', 'index.ts'),
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].js',
