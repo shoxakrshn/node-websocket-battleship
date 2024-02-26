@@ -7,6 +7,7 @@ export const createRoomController = (id: number) => {
   const user = userDb.get(id);
 
   if (user.rooms.length > 0) {
+    console.log(`Fail: ${user.name} has already created a room`);
     return;
   }
 

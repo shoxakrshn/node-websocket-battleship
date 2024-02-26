@@ -12,6 +12,7 @@ export const addUserToRoomController = (id: number, data: string) => {
 
   const isUserInRoom = room.roomUsers.find((user) => user.index === id);
   if (isUserInRoom) {
+    console.log('Fail: The user is already in the Room');
     return;
   }
 
