@@ -1,5 +1,6 @@
 export class User {
   public wins: number;
+  public rooms: number[];
 
   constructor(
     public index: number,
@@ -7,5 +8,14 @@ export class User {
     public password: string,
   ) {
     this.wins = 0;
+    this.rooms = [];
   }
+
+  public addRoom = (roomId: number) => {
+    this.rooms.push(roomId);
+  };
+
+  public clearRoom = () => {
+    this.rooms = [];
+  };
 }

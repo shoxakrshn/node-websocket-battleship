@@ -29,5 +29,11 @@ export const addUserToRoomController = (id: number, data: string) => {
   });
 
   roomDb.delete(indexRoom);
+  room.roomUsers.forEach(({ index }) => {
+    const user = userDb.get(index);
+    user.rooms.forEach((userRoom) => roomDb.delete(userRoom));
+    user.clearRoom();
+  });
+
   broadcastRoom();
 };
