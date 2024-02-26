@@ -7,29 +7,29 @@ import { turnController } from './turn.controller';
 import { broadcastWinners } from './updateWinners.controller';
 import { getAttackFeedbackDto } from '../utils/getAttackFeedbackDto';
 
-function generateCoordinates(board: Map<string, boolean>) {
-  let x: number, y: number;
+// function generateCoordinates(board: Map<string, boolean>) {
+//   let x: number, y: number;
 
-  do {
-    x = Math.floor(Math.random() * 10); // Генерируем случайный индекс для строки
-    y = Math.floor(Math.random() * 10); // Генерируем случайный индекс для столбца
-  } while (board.get(`${x}-${y}`) === true); // Повторяем, пока не найдем false
+//   do {
+//     x = Math.floor(Math.random() * 10); // Генерируем случайный индекс для строки
+//     y = Math.floor(Math.random() * 10); // Генерируем случайный индекс для столбца
+//   } while (board.get(`${x}-${y}`) === true); // Повторяем, пока не найдем false
 
-  return { x, y };
-}
-
-// function findNextFalseCoordinate(board: Map<string, boolean>) {
-//   const matrixSize = 10; // Размер матрицы
-
-//   for (let x = 0; x < matrixSize; x++) {
-//     for (let y = 0; y < matrixSize; y++) {
-//       if (board.get(`${x}-${y}`) === false) {
-//         return { x, y };
-//       }
-//     }
-//   }
-//   return;
+//   return { x, y };
 // }
+
+function generateCoordinates(board: Map<string, boolean>) {
+  const matrixSize = 10; // Размер матрицы
+
+  for (let x = 0; x < matrixSize; x++) {
+    for (let y = 0; y < matrixSize; y++) {
+      if (board.get(`${x}-${y}`) === false) {
+        return { x, y };
+      }
+    }
+  }
+  return;
+}
 
 export const randomAttackController = (data: string) => {
   const { gameId, indexPlayer }: RandomAttackDataClient = JSON.parse(data);
@@ -119,12 +119,15 @@ export const randomAttackController = (data: string) => {
         game.players.forEach((playerId) => {
           if (playerId in socketDb) {
             socketDb[playerId].send(winnerDataAnswerJson);
+            const user = userDb.get(playerId);
+            user.clearGame();
           }
         });
 
         if (indexPlayer !== 99999) {
           const userWiiner = userDb.get(indexPlayer);
           userWiiner.wins += 1;
+          gameDb.delete(gameId);
         }
         broadcastWinners();
         break;

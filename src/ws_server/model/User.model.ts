@@ -1,6 +1,7 @@
 export class User {
   public wins: number;
   public rooms: number[];
+  public games: number[];
 
   constructor(
     public index: number,
@@ -9,6 +10,7 @@ export class User {
   ) {
     this.wins = 0;
     this.rooms = [];
+    this.games = [];
   }
 
   public addRoom = (roomId: number) => {
@@ -17,5 +19,13 @@ export class User {
 
   public clearRoom = () => {
     this.rooms = [];
+  };
+
+  public addGame = (gameId: number) => {
+    this.games.push(gameId);
+  };
+
+  public clearGame = () => {
+    this.games = [];
   };
 }

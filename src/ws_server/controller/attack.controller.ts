@@ -98,11 +98,14 @@ export const attackController = (data: string) => {
         game.players.forEach((playerId) => {
           if (playerId in socketDb) {
             socketDb[playerId].send(winnerDataAnswerJson);
+            const user = userDb.get(playerId);
+            user.clearGame();
           }
         });
 
-        const userWiiner = userDb.get(indexPlayer);
-        userWiiner.wins += 1;
+        const userWinner = userDb.get(indexPlayer);
+        userWinner.wins += 1;
+        gameDb.delete(gameId);
         broadcastWinners();
         break;
       }

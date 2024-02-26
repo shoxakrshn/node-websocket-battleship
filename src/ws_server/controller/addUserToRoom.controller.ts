@@ -23,6 +23,9 @@ export const addUserToRoomController = (id: number, data: string) => {
   gameDb.set(newGame.gameId, newGame);
 
   room.roomUsers.forEach(({ index }) => {
+    const user = userDb.get(index);
+    user.addGame(newGame.gameId);
+
     const updateGameJson = JSON.stringify({ idGame: newGame.gameId, idPlayer: index });
     const updateGameAnswer = generateResponseDto(eRequestType.CreateGame, updateGameJson);
     const socket = socketDb[index];
